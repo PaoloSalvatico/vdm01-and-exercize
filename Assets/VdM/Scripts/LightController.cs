@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public ArrayList[] LightArray;
+    public ArrayList[] findLight;
     Light _light;
 
     void Start()
     {
-        //LightArray = _light.FindObjectsOfType<Light>();
+        var findLight = FindObjectsOfType<Light>();
 
 
         SwitchOff();
@@ -36,7 +36,7 @@ public class LightController : MonoBehaviour
 
     void SwitchOff()
     {
-        foreach(var l in FindObjectsOfType<Light>())
+        foreach(var l in findLight)
         {
             l.enabled = false;
         }
