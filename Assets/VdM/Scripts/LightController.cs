@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public GameObject[] LightArray;
+    public ArrayList[] LightArray;
     Light _light;
 
     void Start()
     {
-        GameObject [] findLights = LightArray;
-        CreateArray();
+        //LightArray = _light.FindObjectsOfType<Light>();
 
-        
+
+        SwitchOff();
 
     }
 
@@ -26,16 +26,19 @@ public class LightController : MonoBehaviour
             {
                 _light.enabled = false;
             }
-            _light.enabled = true;
+            if (_light.enabled == false)
+            {
+                _light.enabled = true;
+            }
+               
         }
     }
 
-    void CreateArray()
+    void SwitchOff()
     {
         foreach(var l in FindObjectsOfType<Light>())
         {
-            for(int i = 0; i < LightArray.Length; i++)
-            LightArray.SetValue(l, i);
+            l.enabled = false;
         }
     }
 }
