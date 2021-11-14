@@ -12,7 +12,7 @@ public class LightController : MonoBehaviour
         var findLight = FindObjectsOfType<Light>();
 
 
-        SwitchOff();
+        //SwitchOff();
 
     }
 
@@ -34,11 +34,5 @@ public class LightController : MonoBehaviour
         }
     }
 
-    void SwitchOff()
-    {
-        foreach(var l in findLight)
-        {
-            l.enabled = false;
-        }
-    }
+   
 }
