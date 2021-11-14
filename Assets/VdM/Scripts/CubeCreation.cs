@@ -12,9 +12,18 @@ public class CubeCreation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i <= size; i++)
+        //Instantiate(prefab, new Vector3(0, 0, 0), rot);
+        for(int x = 0; x <= size; x += (int) spacing)
         {
-            Instantiate(prefab, new Vector3(i + spacing, 0, 0), rot);
+
+            for (int j = 0; j <= size; j += (int) spacing)
+            {
+
+                for(int z = 0; z <= size; z += (int) spacing)
+                {
+                    Instantiate(prefab, new Vector3(x, j, z), rot);
+                }
+            }
         }
     }
 
