@@ -4,35 +4,62 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
-    public ArrayList[] findLight;
-    Light _light;
+
+    Light[] findLight;
+    public float lightPercent;
+    
 
     void Start()
     {
-        var findLight = FindObjectsOfType<Light>();
-
-
-        //SwitchOff();
-
+        SwitchOff();
     }
 
     
     void Update()
     {
-        
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) On_Off();
+        if (Input.GetKeyDown(KeyCode.Alpha2)) RandomSwitch();
+        if (Input.GetKeyDown(KeyCode.Alpha3)) SelectNumberOfSwitch();
+    }
+
+    void SwitchOff()
+    {
+        findLight = FindObjectsOfType<Light>();
+        foreach(Light l in findLight)
         {
-            if(_light.enabled)
-            {
-                _light.enabled = false;
-            }
-            if (_light.enabled == false)
-            {
-                _light.enabled = true;
-            }
-               
+            l.enabled = false;
         }
     }
 
-   
+    void On_Off()
+    {
+        foreach (Light light in findLight)
+        {
+            light.enabled = !light.enabled;
+        }
+    }
+
+    void RandomSwitch()
+    {
+        
+        foreach(Light l in findLight)
+        {
+            int random = Random.Range(0, 2);
+            if (random == 0) l.enabled = !l.enabled;
+        }
+    }
+
+    void SelectNumberOfSwitch()
+    {
+        int numberOfLightToSwitch = Mathf.RoundToInt(findLight.Length * lightPercent);
+
+        for (int counter = 0; counter < findLight.Length; counter++)
+        {
+            if (counter < numberOfLightToSwitch)
+            {
+                findLight[counter].enabled = true;
+            }
+            else findLight[counter].enabled = false;
+        }
+    }
 }
