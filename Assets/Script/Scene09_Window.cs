@@ -10,6 +10,10 @@ public class Scene09_Window : EditorWindow
     public Button button;
 
     private Object prefab;
+    private Dropdown _dropdown;
+    private bool griglia;
+    private bool circle;
+    private bool random;
 
     [MenuItem("Window/Tool")]
     public static void OpenWindow()
@@ -32,6 +36,21 @@ public class Scene09_Window : EditorWindow
         {
             ButtonGenerate();
         }
+
+        griglia = EditorGUILayout.DropdownButton(new GUIContent("Griglia"), FocusType.Passive);
+        EditorGUI.BeginDisabledGroup(griglia);
+        int column = EditorGUILayout.IntField("column", 5);
+        EditorGUI.EndDisabledGroup();
+
+        circle = EditorGUILayout.DropdownButton(new GUIContent("Circle"), FocusType.Passive);
+        EditorGUI.BeginDisabledGroup(circle);
+        EditorGUILayout.IntField(10);
+        EditorGUI.EndDisabledGroup();
+
+        random = EditorGUILayout.DropdownButton(new GUIContent("Random"), FocusType.Passive);
+        EditorGUI.BeginDisabledGroup(random);
+        EditorGUI.EndDisabledGroup();
+
     }
 
     public void ButtonGenerate()
