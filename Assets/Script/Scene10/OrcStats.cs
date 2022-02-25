@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class OrcStats : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public new string name;
+    public int level;
+    public int minHealth;
+    public int maxHealth;
+    public List<string> resists;
+    public List<string> weaknesses;
 }
