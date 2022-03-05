@@ -1,0 +1,8 @@
+{
+  "name": "orc grunt",
+  "level": 1,
+  "minHealth": 20,
+  "maxHealth": 30,
+  "resists": ["cold", "fire"],
+  "weaknesses": ["fire", "light"]
+}
